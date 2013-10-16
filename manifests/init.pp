@@ -13,6 +13,19 @@ class statsd(
   $init_script      = $statsd::params::init_script,
 ) inherits statsd::params {
 
+  validate_string($graphiteserver)
+  if !is_integer($graphiteport) { fail('The $graphiteport parameter must be an integer number') }
+  validate_array($backends)
+  validate_string($address)
+  if !is_integer($listenport) { fail('The $listenport parameter must be an integer number') }
+  if !is_integer($flushinterval) { fail('The $flushinterval parameter must be an integer number') }
+  validate_array($percentthreshold)
+  validate_string($ensure)
+  validate_string($provider)
+  validate_hash($config)
+  validate_absolute_path($statsjs)
+  validate_string($init_script)
+
   require nodejs
 
   package { 'statsd':
