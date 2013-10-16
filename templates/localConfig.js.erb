@@ -2,12 +2,12 @@
   backends: [<% @backends.each do |backend| -%>
   "<%= backend %>",
   <% end -%>]
-, graphitePort: "<%= @graphiteport %>"
-, graphiteHost: "<%= @graphiteserver %>"
-, address: "<%= @address %>"
-, port: "<%= @listenport %>"
-, flushInterval: "<%= @flushinterval %>"
-, percentThreshold: [<%= @percentthreshold.join(', ') %>]
+, graphitePort: "<%= @graphite_port %>"
+, graphiteHost: "<%= @graphite_server %>"
+, address: "<%= @listen_address %>"
+, port: "<%= @listen_port %>"
+, flushInterval: "<%= @flush_interval %>"
+, percentThreshold: [<%= @percent_threshold.join(', ') %>]
 <% @config.each do |k, v| -%>
 , <%= k %>: <%= v %>
 <% end -%>

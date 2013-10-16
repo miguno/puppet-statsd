@@ -1,25 +1,25 @@
 class statsd(
-  $graphiteserver   = $statsd::params::graphiteserver,
-  $graphiteport     = $statsd::params::graphiteport,
-  $backends         = $statsd::params::backends,
-  $address          = $statsd::params::address,
-  $listenport       = $statsd::params::listenport,
-  $flushinterval    = $statsd::params::flushinterval,
-  $percentthreshold = $statsd::params::percentthreshold,
-  $ensure           = $statsd::params::ensure,
-  $provider         = $statsd::params::provider,
-  $config           = $statsd::params::config,
-  $statsjs          = $statsd::params::statsjs,
-  $init_script      = $statsd::params::init_script,
+  $graphite_server   = $statsd::params::graphite_server,
+  $graphite_port     = $statsd::params::graphite_port,
+  $backends          = $statsd::params::backends,
+  $listen_address    = $statsd::params::listen_address,
+  $listen_port       = $statsd::params::listen_port,
+  $flush_interval    = $statsd::params::flush_interval,
+  $percent_threshold = $statsd::params::percent_threshold,
+  $ensure            = $statsd::params::ensure,
+  $provider          = $statsd::params::provider,
+  $config            = $statsd::params::config,
+  $statsjs           = $statsd::params::statsjs,
+  $init_script       = $statsd::params::init_script,
 ) inherits statsd::params {
 
-  validate_string($graphiteserver)
-  if !is_integer($graphiteport) { fail('The $graphiteport parameter must be an integer number') }
+  validate_string($graphite_server)
+  if !is_integer($graphite_port) { fail('The $graphiteport parameter must be an integer number') }
   validate_array($backends)
-  validate_string($address)
-  if !is_integer($listenport) { fail('The $listenport parameter must be an integer number') }
-  if !is_integer($flushinterval) { fail('The $flushinterval parameter must be an integer number') }
-  validate_array($percentthreshold)
+  validate_string($listen_address)
+  if !is_integer($listen_port) { fail('The $listen_port parameter must be an integer number') }
+  if !is_integer($flush_interval) { fail('The $flush_interval parameter must be an integer number') }
+  validate_array($percent_threshold)
   validate_string($ensure)
   validate_string($provider)
   validate_hash($config)
@@ -34,8 +34,8 @@ class statsd(
     notify  => Service['statsd'],
   }
 
-  $configfile  = '/etc/statsd/localConfig.js'
-  $logfile     = '/var/log/statsd/statsd.log'
+  $config_file  = '/etc/statsd/localConfig.js'
+  $log_file     = '/var/log/statsd/statsd.log'
 
   file { '/etc/statsd':
     ensure => directory,
@@ -43,7 +43,7 @@ class statsd(
     group   => 'root',
     mode    => '0755',
   } ->
-  file { $configfile:
+  file { $config_file:
     content => template('statsd/localConfig.js.erb'),
     owner   => 'root',
     group   => 'root',
