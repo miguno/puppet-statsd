@@ -35,7 +35,7 @@ class statsd::params {
             fail('Unsupported provider')
           }
         }
-      } 
+      }
       else {
         $statsjs = "${node_module_dir}/statsd/stats.js"
       }
