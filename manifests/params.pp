@@ -1,14 +1,14 @@
 class statsd::params {
-  $graphite_server   = 'localhost'
-  $graphite_port     = 2003
   $backends          = [ './backends/graphite' ]
+  $config            = { }
+  $ensure            = 'present'
+  $flush_interval    = 10000
+  $graphite_port     = 2003
+  $graphite_server   = 'localhost'
   $listen_address    = '0.0.0.0'
   $listen_port       = 8125
-  $flush_interval    = 10000
   $percent_threshold = ['90']
-  $ensure            = 'present'
   $provider          = 'npm'
-  $config            = { }
   $node_module_dir   = ''
 
   case $::osfamily {
