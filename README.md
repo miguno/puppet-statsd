@@ -53,6 +53,8 @@ statsd::percent_threshold:
 
 # Requirements
 
+_Tested on RHEL/CentOS 6._
+
 * Puppet 3.0+
 * Ruby 1.9 (preferred) or 1.8
 
