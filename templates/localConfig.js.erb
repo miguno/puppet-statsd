@@ -1,14 +1,19 @@
 {
-  backends: [<% @backends.each do |backend| -%>
-  "<%= backend %>",
-  <% end -%>]
+  backends: [<%= @backends.sort.map{|backend| "\"#{backend}\""}.join(', ') %>]
 , graphitePort: "<%= @graphite_port %>"
 , graphiteHost: "<%= @graphite_server %>"
 , address: "<%= @listen_address %>"
 , port: "<%= @listen_port %>"
 , flushInterval: "<%= @flush_interval %>"
 , percentThreshold: [<%= @percent_threshold.join(', ') %>]
-<% @config_variables.each do |k, v| -%>
-, <%= k %>: <%= v %>
-<% end -%>
+<%- @config_variables.sort.each do |k, v| -%>
+  <%- if v.is_a? String -%>
+, <%= "#{k}: #{v}" %>
+  <%- end -%>
+  <%- if v.is_a? Hash -%>
+, <%= k %>: {
+    <%= v.map{|k2, v2| "#{k2}: #{v2}"}.sort.join(', ') %>
+  }
+  <%- end -%>
+<%- end -%>
 }

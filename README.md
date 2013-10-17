@@ -42,6 +42,27 @@ statsd::percent_threshold:
   - 75
   - 90
   - 99
+statsd::config_variables:
+  'graphite':
+    'legacyNamespace': false
+```
+
+The above settings will result in:
+
+```json
+{
+  backends: [ "./backends/graphite" ]
+, graphitePort: "2003"
+, graphiteHost: "my.graphite.server"
+, address: "10.20.1.2"
+, port: "2158"
+, flushInterval: "1000"
+, percentThreshold: [75, 90, 99]
+, graphite: {
+    legacyNamespace: false
+  }
+}
+
 ```
 
 * See [params.pp](manifests/params.pp) for default settings such as the default UDP port of statsd.
