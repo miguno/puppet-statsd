@@ -48,7 +48,7 @@ statsd::percent_threshold:
 
 * See [params.pp](manifests/params.pp) for default settings such as the default UDP port of statsd.
 * You can use the `$config_variables` hash to add further settings dynamically to the configuration file of statsd.
-  See [localConfig.js.erb](templates/localConfig.js.erb) for details.
+  See [localConfig.js.erb](templates/localConfig.js.erb) for implementation details.
 
 
 <a name="requirements"></a>
