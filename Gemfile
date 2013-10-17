@@ -14,5 +14,5 @@ group :rake do
   gem 'puppetlabs_spec_helper'
   # See https://github.com/maestrodev/puppet-blacksmith
   gem 'puppet-blacksmith', '>=1.0.1'
-  gem 'librarian-puppet-maestrodev', '>=0.9.7.4'
+  gem 'librarian-puppet', '>= 0.9.10'
 end
