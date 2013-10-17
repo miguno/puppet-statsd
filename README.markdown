@@ -3,7 +3,7 @@
 Manage [statsd](https://github.com/etsy/statsd/) with Puppet.
 
 
-# Usage
+# Usage and configuration
 
 In Puppet manifests:
 
@@ -29,6 +29,8 @@ statsd::percent_threshold:
   - 90
   - 99
 ```
+
+See [params.pp](manifests/params.pp) for default settings such as stats'd default UDP listen port.
 
 
 # Contributors
