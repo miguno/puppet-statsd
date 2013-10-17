@@ -1,6 +1,10 @@
 class statsd::service inherits statsd {
 
-  if ($service_manage) {
+  if ! ($service_ensure in [ 'running', 'stopped' ]) {
+    fail('The $service_ensure value must be either "running" or "stopped"')
+  }
+
+  if $service_manage == true {
 
     if $service_ensure == 'running' {
       $ensure_real = 'running'
@@ -12,9 +16,9 @@ class statsd::service inherits statsd {
     }
 
     service { 'statsd':
-      name       => $service_name,
       ensure     => $ensure_real,
       enable     => $enable_real,
+      name       => $service_name,
       hasstatus  => true,
       hasrestart => true,
       pattern    => 'node .*stats.js',

@@ -43,7 +43,7 @@ class statsd(
   validate_string($package_name)
   validate_string($package_provider)
   validate_array($percent_threshold)
-  validate_re($service_ensure, '^(running|stopped)$', 'The $service_ensure value must be either "running" or "stopped"')
+  validate_string($service_ensure)
   validate_bool($service_manage)
   validate_string($service_name)
   validate_string($statsd_bin)

@@ -2,7 +2,7 @@ class statsd::config inherits statsd {
 
   $config_directory = dirname($config_file)
   file { $config_directory:
-    ensure => directory,
+    ensure  => directory,
     owner   => 'root',
     group   => 'root',
     mode    => '0755',
