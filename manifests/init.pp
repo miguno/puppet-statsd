@@ -38,7 +38,7 @@ class statsd(
   validate_string($listen_address)
   if !is_integer($listen_port) { fail('The $listen_port parameter must be an integer number') }
   validate_absolute_path($log_file)
-  validate_absolute_path($node_module_dir)
+  if $node_module_dir != undef { validate_absolute_path($node_module_dir) }
   validate_string($package_ensure)
   validate_string($package_name)
   validate_string($package_provider)
