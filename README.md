@@ -1,7 +1,23 @@
 # puppet-statsd
 
-Manage [statsd](https://github.com/etsy/statsd/) with Puppet.
+A Puppet module for managing the installation and configuration of [statsd](https://github.com/etsy/statsd/).
 
+[![Build Status](https://travis-ci.org/miguno/puppet-statsd.png?branch=master)](https://travis-ci.org/miguno/puppet-statsd)
+
+---
+
+Table of Contents
+
+* <a href="#usage">Usage and configuration</a>
+* <a href="#requirements">Requirements</a>
+* <a href="#development-enviroment">Setting up a local development environment</a>
+    * <a href="#tests">Running tests</a>
+    * <a href="#lint">Running lint</a>
+* <a href="#credits">Credits</a>
+
+---
+
+<a name="usage"></a>
 
 # Usage and configuration
 
@@ -30,9 +46,42 @@ statsd::percent_threshold:
   - 99
 ```
 
-See [params.pp](manifests/params.pp) for default settings such as stats'd default UDP listen port.
+See [params.pp](manifests/params.pp) for default settings such as the default UDP port of statsd.
 
 
-# Contributors
+<a name="requirements"></a>
 
-  * Thanks to Ben Hughes (ben@puppetlabs.com) for initial implementation
+# Requirements
+
+* Puppet 3.0+
+* Ruby 1.9 (preferred) or 1.8
+
+
+<a name="develoment-environment"></a>
+
+# Setting up a local development environment
+
+After cloning this git repository you only need to run:
+
+    $ ./bootstrap
+
+
+<a name="tests"></a>
+
+## Running tests
+
+    $ rake spec
+
+
+<a name="lint"></a>
+
+## Running lint
+
+    $ rake lint
+
+
+<a name="credits"></a>
+
+# Credits
+
+  * Thanks to Ben Hughes (ben@puppetlabs.com) for the initial implementation.
