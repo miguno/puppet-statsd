@@ -9,6 +9,6 @@
 , flushInterval: "<%= @flush_interval %>"
 , percentThreshold: [<%= @percent_threshold.join(', ') %>]
 <% @config_variables.each do |k, v| -%>
-, <%= k %>: "<%= v %>"
+, <%= k %>: <%= v %>
 <% end -%>
 }
