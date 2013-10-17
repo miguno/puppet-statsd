@@ -3,7 +3,7 @@ class statsd::install inherits statsd {
   package { 'statsd':
     ensure   => $package_ensure,
     name     => $package_name,
-    provider => $provider,
+    provider => $package_provider,
     notify   => Class['statsd::service'],
   }
 
