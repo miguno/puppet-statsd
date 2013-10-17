@@ -57,7 +57,7 @@ class statsd(
   include '::statsd::service'
 
   anchor { 'statsd::begin': }
-  anchor { 'statsd::end' }
+  anchor { 'statsd::end': }
 
   Anchor['statsd::begin'] ->
   Class['::statsd::install'] ->
