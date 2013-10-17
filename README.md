@@ -65,7 +65,7 @@ statsd::percent_threshold:
 
 After cloning this git repository you only need to run:
 
-    $ ./bootstrap
+    $ ./bootstrap.sh
 
 
 <a name="tests"></a>
