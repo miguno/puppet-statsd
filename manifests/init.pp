@@ -1,88 +1,68 @@
 class statsd(
   $backends          = $statsd::params::backends,
-  $config            = $statsd::params::config,
-  $ensure            = $statsd::params::ensure,
+  $config_file       = $statsd::params::config_file,
+  $config_variables  = $statsd::params::config_variables,
+  $defaults_file     = $statsd::params::defaults_file,
+  $defaults_template = $statsd::params::defaults_template,
   $flush_interval    = $statsd::params::flush_interval,
   $graphite_port     = $statsd::params::graphite_port,
   $graphite_server   = $statsd::params::graphite_server,
-  $init_script       = $statsd::params::init_script,
+  $init_file         = $statsd::params::init_file,
+  $init_content      = $statsd::params::init_content,
   $listen_address    = $statsd::params::listen_address,
   $listen_port       = $statsd::params::listen_port,
+  $log_file          = $statsd::params::log_file,
+  $node_module_dir   = $statsd::params::node_module_dir,
+  $package_ensure    = $statsd::params::package_ensure,
+  $package_name      = $statsd::params::package_name,
+  $package_provider  = $statsd::params::package_provider,
   $percent_threshold = $statsd::params::percent_threshold,
-  $provider          = $statsd::params::provider,
-  $statsjs           = $statsd::params::statsjs,
+  $service_ensure    = $statsd::params::service_ensure,
+  $service_manage    = $statsd::params::service_manage,
+  $service_name      = $statsd::params::service_name,
+  $statsd_bin        = $statsd::params::statsd_bin,
+  $statsd_bin_file   = $statsd::params::statsd_bin_file,
+  $statsjs_file      = $statsd::params::statsjs_file,
 ) inherits statsd::params {
 
   validate_array($backends)
-  validate_hash($config)
-  validate_string($ensure)
+  validate_absolute_path($config_file)
+  validate_hash($config_variables)
+  validate_absolute_path($defaults_file)
+  validate_string($defaults_template)
   if !is_integer($flush_interval) { fail('The $flush_interval parameter must be an integer number') }
   if !is_integer($graphite_port) { fail('The $graphiteport parameter must be an integer number') }
   validate_string($graphite_server)
-  validate_string($init_script)
+  validate_absolute_path($init_file)
+  validate_string($init_content)
   validate_string($listen_address)
   if !is_integer($listen_port) { fail('The $listen_port parameter must be an integer number') }
+  validate_absolute_path($log_file)
+  validate_absolute_path($node_module_dir)
+  validate_string($package_ensure)
+  validate_string($package_name)
+  validate_string($package_provider)
   validate_array($percent_threshold)
-  validate_string($provider)
-  validate_absolute_path($statsjs)
+  validate_re($service_ensure, '^(running|stopped)$', 'The $service_ensure value must be either "running" or "stopped"')
+  validate_bool($service_manage)
+  validate_string($service_name)
+  validate_string($statsd_bin)
+  validate_absolute_path($statsd_bin_file)
+  validate_absolute_path($statsjs_file)
 
   require nodejs
 
-  package { 'statsd':
-    ensure   => $ensure,
-    provider => $provider,
-    notify  => Service['statsd'],
-  }
+  include '::statsd::install'
+  include '::statsd::config'
+  include '::statsd::service'
 
-  $config_file  = '/etc/statsd/localConfig.js'
-  $log_file     = '/var/log/statsd/statsd.log'
+  anchor { 'statsd::begin': }
+  anchor { 'statsd::end' }
 
-  file { '/etc/statsd':
-    ensure => directory,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0755',
-  } ->
-  file { $config_file:
-    content => template('statsd/localConfig.js.erb'),
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0444',
-    notify  => Service['statsd'],
-  }
-  file { '/etc/init.d/statsd':
-    source  => $init_script,
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0755',
-    notify  => Service['statsd'],
-  }
-  file {  '/etc/default/statsd':
-    content => template('statsd/statsd-defaults.erb'),
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0755',
-    notify  => Service['statsd'],
-  }
-  file { '/var/log/statsd':
-    ensure => directory,
-    owner  => 'nobody',
-    group  => 'root',
-    mode   => '0770',
-  }
-  file { '/usr/local/sbin/statsd':
-    source  => 'puppet:///modules/statsd/statsd-wrapper',
-    owner   => 'root',
-    group   => 'root',
-    mode    => '0755',
-    notify  => Service['statsd'],
-  }
+  Anchor['statsd::begin'] ->
+  Class['::statsd::install'] ->
+  Class['::statsd::config'] ~>
+  Class['::statsd::service'] ->
+  Anchor['statsd::end']
 
-  service { 'statsd':
-    ensure    => running,
-    enable    => true,
-    hasstatus => true,
-    pattern   => 'node .*stats.js',
-    require   => File['/var/log/statsd'],
-  }
 }

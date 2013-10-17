@@ -8,7 +8,7 @@
 , port: "<%= @listen_port %>"
 , flushInterval: "<%= @flush_interval %>"
 , percentThreshold: [<%= @percent_threshold.join(', ') %>]
-<% @config.each do |k, v| -%>
+<% @config_variables.each do |k, v| -%>
 , <%= k %>: <%= v %>
 <% end -%>
 }
