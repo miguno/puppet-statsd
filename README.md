@@ -1,8 +1,6 @@
-# puppet-statsd
+# puppet-statsd [![Build Status](https://travis-ci.org/miguno/puppet-statsd.png?branch=master)](https://travis-ci.org/miguno/puppet-statsd)
 
 A Puppet module for managing the installation and configuration of [statsd](https://github.com/etsy/statsd/).
-
-[![Build Status](https://travis-ci.org/miguno/puppet-statsd.png?branch=master)](https://travis-ci.org/miguno/puppet-statsd)
 
 ---
 
