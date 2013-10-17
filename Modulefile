@@ -1,5 +1,5 @@
 name 'miguno-statsd'
-version '1.0.2'
+version '1.0.3'
 author 'Michael Noll <michael@michael-noll.com>'
 license 'Apache 2.0'
 
