@@ -62,7 +62,6 @@ The above settings will result in:
     legacyNamespace: false
   }
 }
-
 ```
 
 * See [params.pp](manifests/params.pp) for default settings such as the default UDP port of statsd.
