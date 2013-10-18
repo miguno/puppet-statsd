@@ -65,8 +65,9 @@ The above settings will result in the following `localConfig.js`:
 ```
 
 * See [params.pp](manifests/params.pp) for default settings such as the default UDP port of statsd.
-* You can use the `$config_variables` hash to add further settings dynamically to the configuration file of statsd.
-  See [localConfig.js.erb](templates/localConfig.js.erb) for implementation details.
+* You can use the `$config_variables` class parameter (which is a hash) to add further statsd settings
+  dynamically to localConfig.js.  See [localConfig.js.erb](templates/localConfig.js.erb) for implementation
+  details.
 
 
 <a name="requirements"></a>
