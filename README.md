@@ -47,9 +47,9 @@ statsd::config_variables:
     'legacyNamespace': false
 ```
 
-The above settings will result in:
+The above settings will result in the following `localConfig.js`:
 
-```json
+```
 {
   backends: [ "./backends/graphite" ]
 , graphitePort: "2003"
