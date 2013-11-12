@@ -10,4 +10,5 @@ FORGE
 
 DEPENDENCIES
   puppetlabs/nodejs (>= 0.2.0)
+  puppetlabs/stdlib (>= 4.1.0)
 
