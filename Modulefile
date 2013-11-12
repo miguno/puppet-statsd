@@ -1,6 +1,6 @@
 name         'miguno-statsd'
 version      '1.0.3'
-author       'Michael Noll <michael@michael-noll.com>'
+author       'Michael G. Noll'
 license      'Apache 2.0'
 
 summary      'Install and manage statds'
