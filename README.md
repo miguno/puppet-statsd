@@ -107,4 +107,5 @@ After cloning this git repository you only need to run:
 
 # Credits
 
-  * Thanks to Ben Hughes (ben@puppetlabs.com) for the initial implementation.
+This module is based on -- and a fork of -- the great work done by
+[puppetlabs-operations](https://github.com/puppetlabs-operations/puppet-statsd).
