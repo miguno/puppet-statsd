@@ -1,4 +1,4 @@
-name         'miguno-statsd'
+name         'wirbelsturm-statsd'
 version      '1.0.3'
 author       'Michael G. Noll'
 license      'Apache 2.0'
