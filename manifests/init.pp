@@ -18,7 +18,7 @@ class statsd(
   $package_provider  = $statsd::params::package_provider,
   $percent_threshold = $statsd::params::percent_threshold,
   $service_ensure    = $statsd::params::service_ensure,
-  $service_manage    = $statsd::params::service_manage,
+  $service_manage    = hiera('statsd::service_manage', $statsd::params::service_manage),
   $service_name      = $statsd::params::service_name,
   $statsd_bin        = $statsd::params::statsd_bin,
   $statsd_bin_file   = $statsd::params::statsd_bin_file,
