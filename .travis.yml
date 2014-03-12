@@ -2,6 +2,11 @@
 # See https://groups.google.com/forum/#!msg/travis-ci/XID21_FwgX8/Dbiv3wDUTZwJ
 bundler_args: ""
 
+# Fixes a rubygems bug that causes failures on Travis CI
+# See https://github.com/bundler/bundler/issues/2784
+before_install:
+  - gem update --system 2.2.1
+  - gem --version
 language: ruby
 rvm:
   - 1.9.3
