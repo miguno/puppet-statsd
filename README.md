@@ -1,6 +1,7 @@
 # puppet-statsd [![Build Status](https://travis-ci.org/miguno/puppet-statsd.png?branch=master)](https://travis-ci.org/miguno/puppet-statsd)
 
-A Puppet module for managing the installation and configuration of [statsd](https://github.com/etsy/statsd/).
+[Wirbelsturm](https://github.com/miguno/wirbelsturm)-compatible [Puppet](http://puppetlabs.com/) module to deploy
+[statsd](https://github.com/etsy/statsd/).
 
 ---
 
