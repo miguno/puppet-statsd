@@ -1,5 +1,5 @@
 name         'wirbelsturm-statsd'
-version      '1.0.4'
+version      '1.0.5'
 author       'Michael G. Noll'
 license      'Apache 2.0'
 
