@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## 1.0.4 (2014-04-08)
+
+* Remove `puppetlabs/stdlib` from `Modulefile` to decouple us from PuppetForge.
+
+
 ## 1.0.3 (2013-10-17)
 
 * Fix RHEL/CentOS 6 support.

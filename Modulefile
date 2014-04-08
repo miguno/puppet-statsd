@@ -1,5 +1,5 @@
 name         'wirbelsturm-statsd'
-version      '1.0.3'
+version      '1.0.4'
 author       'Michael G. Noll'
 license      'Apache 2.0'
 
@@ -9,5 +9,5 @@ description  'Install and manage statsd, a UDP based gateway to Graphite.  Forke
 source       'https://github.com/miguno/puppet-statsd'
 project_page 'https://github.com/miguno/puppet-statsd'
 
-dependency 'puppetlabs/nodejs', '>= 0.2.0'
-dependency 'puppetlabs/stdlib', '>= 4.1.0'
+#DISABLED SO WE DO NOT DEPEND ON PUPPETFORGE#dependency 'puppetlabs/nodejs', '>= 0.2.0'
+#DISABLED SO WE DO NOT DEPEND ON PUPPETFORGE#dependency 'puppetlabs/stdlib', '>= 4.1.0'
