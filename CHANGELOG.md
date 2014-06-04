@@ -3,6 +3,7 @@
 ## 1.0.5 (unreleased)
 
 * Rename `bootstrap.sh` to `bootstrap`.
+* bootstrap: Use new GitHub.com URL for retrieving raw user content.
 
 
 ## 1.0.4 (2014-04-08)
