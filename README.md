@@ -115,7 +115,7 @@ _Tested on RHEL/CentOS 6._
 
 After cloning this git repository you only need to run:
 
-    $ ./bootstrap.sh
+    $ ./bootstrap
 
 
 <a name="tests"></a>

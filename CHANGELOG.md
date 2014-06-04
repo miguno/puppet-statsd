@@ -2,7 +2,7 @@
 
 ## 1.0.5 (unreleased)
 
-* TBD
+* Rename `bootstrap.sh` to `bootstrap`.
 
 
 ## 1.0.4 (2014-04-08)
